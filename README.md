@@ -10,3 +10,5 @@ I made this using:
   - JAVASCRIPT
   - AJAX
   - AXIOS
+  - API TDMB - (https://developers.themoviedb.org/3)
+You can see the site [here](https://movie-search-page.netlify.app/)
