@@ -7,6 +7,9 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?' + API_KEY;
 
 const main = document.getElementById('main');
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+
 
 const getMovies = async (url) => {
     try {
@@ -21,7 +24,6 @@ const getMovies = async (url) => {
 const showMovies = (res) => {
     main.innerHTML = '';
 
-    console.log(res[1].poster_path)
     for (let movie of res) {
         const movieCard = document.createElement('div');
         movieCard.classList.add('movie');
@@ -56,3 +58,19 @@ const getColor = (vote) => {
 }
 
 getMovies(POPULAR_URL);
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const searchTerm = search.value;
+
+    if (searchTerm) {
+        getMovies(searchURL + '&query=' + searchTerm);
+    }
+    else {
+        getMovies(POPULAR_URL);
+    }
+
+    search.value = '';
+})
+
+
