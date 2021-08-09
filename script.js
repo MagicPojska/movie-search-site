@@ -25,9 +25,10 @@ const showMovies = (res) => {
     main.innerHTML = '';
 
     for (let movie of res) {
-        const movieCard = document.createElement('div');
-        movieCard.classList.add('movie');
-        movieCard.innerHTML = `
+        if (movie.poster_path) {
+            const movieCard = document.createElement('div');
+            movieCard.classList.add('movie');
+            movieCard.innerHTML = `
             <img src="${IMG_URL + movie.poster_path}"
             alt="${movie.title}">
 
@@ -41,7 +42,8 @@ const showMovies = (res) => {
                 ${movie.overview}
             </div>`;
 
-        main.append(movieCard);
+            main.append(movieCard);
+        }
     }
 }
 
